@@ -1,0 +1,34 @@
+#!/bin/bash
+
+JOB_DIR=/var/vcap/jobs/server
+RUN_DIR=/var/vcap/sys/run/server
+LOG_DIR=/var/vcap/sys/log/server
+PIDFILE=$RUN_DIR/server.pid
+
+source /var/vcap/packages/common/utils.sh
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "server"
+
+    mkdir -p $RUN_DIR
+    mkdir -p $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    exec /var/vcap/packages/server/bin/server
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: server_ctl {start|stop}"
+
+    ;;
+
+esac

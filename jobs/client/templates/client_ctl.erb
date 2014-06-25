@@ -1,0 +1,34 @@
+#!/bin/bash
+
+JOB_DIR=/var/vcap/jobs/client
+RUN_DIR=/var/vcap/sys/run/client
+LOG_DIR=/var/vcap/sys/log/client
+PIDFILE=$RUN_DIR/client.pid
+
+source /var/vcap/packages/common/utils.sh
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "client"
+
+    mkdir -p $RUN_DIR
+    mkdir -p $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    exec /var/vcap/packages/client/client.sh <%= properties.server_address %>
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: client_ctl {start|stop}"
+
+    ;;
+
+esac

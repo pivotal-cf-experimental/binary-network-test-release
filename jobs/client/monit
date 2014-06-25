@@ -1,0 +1,5 @@
+check process client
+  with pidfile /var/vcap/sys/run/client/client.pid
+  start program "/var/vcap/jobs/client/bin/client_ctl start"
+  stop program "/var/vcap/jobs/client/bin/client_ctl stop"
+  group vcap

@@ -1,0 +1,29 @@
+networks: (( merge ))
+
+meta:
+  environment: ~
+
+  release:
+    name: binary-network-test
+
+jobs:
+- name: client
+  release: (( meta.release.name ))
+  template: client
+  instances: 0
+  resource_pool: small
+  networks:
+  - name: binary1
+    static_ips: ~
+
+- name: server
+  release: (( meta.release.name ))
+  template: server
+  instances: 0
+  resource_pool: small
+  networks:
+  - name: binary1
+    static_ips: ~
+
+properties:
+  server: (( jobs.server.networks.binary1 ))

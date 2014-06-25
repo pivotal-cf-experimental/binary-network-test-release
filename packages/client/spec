@@ -1,0 +1,7 @@
+---
+name: client
+
+dependencies:
+
+files:
+- client/**/*

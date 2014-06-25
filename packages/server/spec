@@ -1,0 +1,8 @@
+---
+name: server
+
+dependencies:
+- golang
+
+files:
+- server/**/*.go

@@ -1,0 +1,9 @@
+---
+name: server
+templates:
+- server_ctl: bin/server_ctl
+
+packages:
+- common
+- golang
+- server
