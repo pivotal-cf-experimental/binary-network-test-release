@@ -1,11 +1,14 @@
 #!/bin/bash
 
+set -e -x
+
 SERVER=${1}
-DURATION=${2:-60}
+PORT=${2:-8080}
+DURATION=${3:-60}
 
 while true; do
-  curl http://${SERVER}:8080
+  curl http://${SERVER}:${PORT}
 
-  echo "Waiting $DURATION to curl $SERVER again"
+  echo "Waiting $DURATION seconds to curl $SERVER:$PORT again"
   sleep ${DURATION}
-end
+done
