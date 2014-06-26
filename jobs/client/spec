@@ -1,7 +1,7 @@
 ---
 name: client
 templates:
-- client_ctl.erb: bin/client_ctl
+  client_ctl.erb: bin/client_ctl
 
 packages:
 - client
