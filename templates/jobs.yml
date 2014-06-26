@@ -26,4 +26,4 @@ jobs:
     static_ips: ~
 
 properties:
-  server: (( jobs.server.networks.binary1 ))
+  server_address: (( jobs.server.networks.binary1.static_ips.[0] ))
