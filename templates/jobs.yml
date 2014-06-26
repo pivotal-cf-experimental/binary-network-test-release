@@ -7,6 +7,15 @@ meta:
     name: binary-network-test
 
 jobs:
+- name: server
+  release: (( meta.release.name ))
+  template: server
+  instances: 0
+  resource_pool: small
+  networks:
+  - name: binary1
+    static_ips: ~
+
 - name: client
   release: (( meta.release.name ))
   template: client
@@ -16,14 +25,6 @@ jobs:
   - name: binary1
     static_ips: ~
 
-- name: server
-  release: (( meta.release.name ))
-  template: server
-  instances: 0
-  resource_pool: small
-  networks:
-  - name: binary1
-    static_ips: ~
 
 properties:
   server_address: (( jobs.server.networks.binary1.static_ips.[0] ))
