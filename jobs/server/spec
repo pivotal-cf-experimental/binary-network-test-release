@@ -1,7 +1,7 @@
 ---
 name: server
 templates:
-  server_ctl: bin/server_ctl
+  server_ctl.erb: bin/server_ctl
 
 packages:
 - common

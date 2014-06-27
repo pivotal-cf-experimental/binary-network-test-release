@@ -17,7 +17,7 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    exec /var/vcap/packages/server/bin/server
+    exec /var/vcap/packages/server/bin/server -port <%= p("server_port") %>
 
     ;;
 
