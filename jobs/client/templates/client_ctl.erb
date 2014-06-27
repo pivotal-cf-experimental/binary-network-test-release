@@ -17,7 +17,11 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    exec /var/vcap/packages/client/client.sh <%= properties.server_address %>
+    exec /var/vcap/packages/client/client.sh \
+        <%= p("server_address") %> \
+        <%= p("server_port") %> \
+        <%= p("connection_timeout_in_seconds") %> \
+        <%= p("connection_retry_in_seconds") %>
 
     ;;
 
